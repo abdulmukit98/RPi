@@ -11,11 +11,9 @@ import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 
 GPIO.setup(15, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)    # input pullup
-GPIO.setup(15, GPIO.IN)            # normal, without pullup
-
+GPIO.setup(15, GPIO.IN)            # without pullup
 
 switch = GPIO.input(15)
-
 while True:
     if(switch == True):
         camera = PiCamera()

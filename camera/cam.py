@@ -10,11 +10,13 @@ import RPi.GPIO as GPIO
 #GPIO.setmode(GPIO.BOARD)
 GPIO.setmode(GPIO.BCM)
 
-led = GPIO.setup(15, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
-led = GPIO.input(15)
+GPIO.setup(15, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)    # input pullup
+GPIO.setup(15, GPIO.IN)            # normal, without pullup
+
+
+switch = GPIO.input(15)
 
 while True:
-    switch = GPIO.input(15)
     if(switch == True):
         camera = PiCamera()
         camera.capture("/home/pi/Desktop/image.jpg")
